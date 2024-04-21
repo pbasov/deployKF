@@ -174,5 +174,10 @@ manifests/kubeflow-tools/volumes/
 {{<- if not .Values.kubeflow_tools.knative.enabled >}}
 argocd/applications/kubeflow-tools/knative.yaml
 argocd/namespaces/kubeflow-tools/knative.yaml
-manifests/kubeflow-tools/kubeflow-knative/
+manifests/kubeflow-tools/knative/
+{{<- end >}}
+{{<- if not .Values.kubeflow_tools.kserve.enabled >}}
+argocd/applications/kubeflow-tools/kserve.yaml
+argocd/namespaces/kubeflow-tools/kserve.yaml
+manifests/kubeflow-tools/kserve/
 {{<- end >}}

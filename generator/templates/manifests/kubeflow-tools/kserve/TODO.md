@@ -1,0 +1,4 @@
+- ingress domain
+- http schema
+- s3 creds (consider where they are used)
+- ingress config

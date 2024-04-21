@@ -2089,3 +2089,23 @@ kubeflow_tools:
     enabled: true
     namespace: knative-serving
     extraManifests: []
+  
+  ## --------------------------------------
+  ##                kserve
+  ## --------------------------------------
+  kserve:
+    enabled: true
+    namespace: kserve
+    extraManifests: []
+    ingress:
+      ingressGateway:
+      ingressService:
+      localGateway:
+      localGatewayService:
+      ingressClassName: istio
+      disableIstioVirtualHost: true
+      domainTemplate: "{{ .Name }}-{{ .Namespace }}.{{ .IngressDomain }}"
+      ingressDomain: example.com
+      urlScheme: https
+    credentials:
+      s3: {}

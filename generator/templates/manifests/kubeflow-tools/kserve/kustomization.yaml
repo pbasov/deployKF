@@ -7,11 +7,7 @@ kind: Kustomization
 
 resources:
   ## upstream
-  - upstream/serving-core.yaml
-  - upstream/net-istio.yaml
-  - resources/wildcard-cert.yaml
-  - resources/config-certmanager.yaml
+  - upstream/kserve.yaml
+  - upstream/kserve-cluster-resources.yaml
 patchesStrategicMerge:
-  - patches/patchDomains.yaml
-  - patches/patchIstioGateways.yaml
-  - patches/patchIstioConfig.yaml
+  - patches/patchKserveConfigMap.yaml
