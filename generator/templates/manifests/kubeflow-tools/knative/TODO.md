@@ -1,5 +1,0 @@
-- Fix domains
-- Fix domain url generator
-- More parameters
-- Local gateway?
-- Patch namespaces everywhere!

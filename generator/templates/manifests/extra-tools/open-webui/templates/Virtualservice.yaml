@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: open-webui
+  labels:
+    helm.sh/chart: {{ include "deploykf-open-webui.labels.chart" . }}
+    app.kubernetes.io/name: {{ include "deploykf-open-webui.labels.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: open-webui
+spec:
+  gateways:
+    - {{ .Values.deployKF.gateway.namespace }}/{{ .Values.deployKF.gateway.name }}
+  hosts:
+    - chat.{{ .Values.deployKF.gateway.hostname }}
+  http:
+    - name: open-webui-route
+      route:
+        - destination:
+            host: open-webui.{{ .Release.Namespace }}.svc.{{ .Values.deployKF.clusterDomain }}
+            port:
+              number: 80

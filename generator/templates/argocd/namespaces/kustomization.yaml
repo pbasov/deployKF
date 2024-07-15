@@ -69,9 +69,10 @@ resources:
              .Values.kubeflow_tools.volumes.enabled >}}
   - kubeflow-tools/kubeflow.yaml
   {{<- end >}}
-  {{<- if .Values.kubeflow_tools.knative.enabled >}}
-  - kubeflow-tools/knative.yaml
-  {{<- end >}}
   {{<- if .Values.kubeflow_tools.kserve.enabled >}}
   - kubeflow-tools/kserve.yaml
+  {{<- end >}}
+
+  {{<- if .Values.extra_tools.open_webui.enabled >}}
+  - extra-tools/open-webui.yaml
   {{<- end >}}

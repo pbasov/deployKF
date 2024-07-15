@@ -1,0 +1,62 @@
+open-webui:
+  ollama:
+    image:
+      tag: "0.2.1"
+    ollama:
+      models:
+        - llama3:8b
+        - llama3:70b
+      gpu:
+        enabled: true
+        number: 2
+      persistentVolume:
+        enabled: true
+        storageClass: "openebs-lvmpv"
+        size: "200Gi"
+      updateStrategy:
+        type: "Recreate"
+      extraEnv:
+        - name: OLLAMA_FLASH_ATTENTION
+          value: "1"
+        - name: OLLAMA_KEEP_ALIVE
+          value: "-1"
+  
+  ingress:
+    enabled: true
+    class: "istio"
+    host: "chat.kf.cz03.weystrom.net"
+    tls: true
+    annotations:
+      kubernetes.io/tls-acme: "true"
+  
+  persistence:
+    enabled: true
+    storageClass: "openebs-lvmpv"
+
+########################################
+## SHARED | deploykf
+########################################
+deployKF:
+  extraManifests:
+    {{<- range $manifest := .Values.deploykf_core.deploykf_auth.extraManifests >}}
+    - {{< (tpl $manifest $) | quote >}}
+    {{<- end >}}
+
+  clusterDomain: cluster.local
+
+  certManager:
+    clusterIssuer:
+      selfSigned:
+        injectedConfigMapName: {{< .Values.deploykf_dependencies.cert_manager.clusterIssuer.selfSigned.injectedConfigMapName | quote >}}
+
+  istio:
+    namespace: {{< .Values.deploykf_dependencies.istio.namespace | quote >}}
+
+  gateway:
+    namespace: {{< .Values.deploykf_core.deploykf_istio_gateway.namespace | quote >}}
+    serviceAccount: {{< .Values.deploykf_core.deploykf_istio_gateway.gatewayDeployment.serviceAccount.name | quote >}}
+    name: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.name | quote >}}
+    hostname: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.hostname | quote >}}
+    tls:
+      enabled: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.tls.enabled | conv.ToBool >}}
+      clientsUseHttps: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.tls.clientsUseHttps | conv.ToBool >}}

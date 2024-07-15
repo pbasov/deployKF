@@ -9,5 +9,19 @@ resources:
   ## upstream
   - upstream/kserve.yaml
   - upstream/kserve-cluster-resources.yaml
+  - upstream/web-app/contrib/kserve/models-web-app/base
+  - resources/webAppClusterRole.yaml
 patchesStrategicMerge:
   - patches/patchKserveConfigMap.yaml
+  - patches/patchWebAppIstioConfig.yaml
+images:
+- name: kserve/models-web-app
+  newName: weystrom/models-web-app
+  newTag: latest
+
+configMapGenerator:
+- literals:
+  - APP_DISABLE_AUTH="True"
+  - APP_PREFIX="/kserve-endpoints"
+  name: kserve-models-web-app-config
+  behavior: merge

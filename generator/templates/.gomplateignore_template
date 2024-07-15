@@ -171,13 +171,15 @@ manifests/kubeflow-tools/training-operator/
 argocd/applications/kubeflow-tools/volumes--volumes-web-app.yaml
 manifests/kubeflow-tools/volumes/
 {{<- end >}}
-{{<- if not .Values.kubeflow_tools.knative.enabled >}}
-argocd/applications/kubeflow-tools/knative.yaml
-argocd/namespaces/kubeflow-tools/knative.yaml
-manifests/kubeflow-tools/knative/
-{{<- end >}}
 {{<- if not .Values.kubeflow_tools.kserve.enabled >}}
 argocd/applications/kubeflow-tools/kserve.yaml
 argocd/namespaces/kubeflow-tools/kserve.yaml
 manifests/kubeflow-tools/kserve/
+{{<- end >}}
+
+## extra tools 
+{{<- if not .Values.extra_tools.open_webui.enabled >}}
+argocd/applications/extra-tools/open-webui.yaml
+argocd/namespaces/extra-tools/open-webui.yaml
+manifests/extra-tools/open-webui/
 {{<- end >}}

@@ -95,6 +95,9 @@ resources:
   - kubeflow-tools/volumes--volumes-web-app.yaml
   {{<- end >}}
 
+  {{<- if .Values.extra_tools.open_webui.enabled >}}
+  - extra-tools/open-webui.yaml
+  {{<- end >}}
 {{<- if .Values.argocd.appNamePrefix >}}
 transformers:
   - |

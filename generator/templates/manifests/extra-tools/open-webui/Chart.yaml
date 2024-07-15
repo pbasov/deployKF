@@ -1,0 +1,8 @@
+apiVersion: v2
+name: deploykf-open-webui
+version: 1.0.0
+dependencies:
+  - alias: open-webui
+    name: {{< .Values.extra_tools.open_webui.charts.open_webui.name | quote >}}
+    version: {{< .Values.extra_tools.open_webui.charts.open_webui.version | quote >}}
+    repository: {{< .Values.extra_tools.open_webui.charts.open_webui.repository | quote >}}

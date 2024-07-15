@@ -26,14 +26,18 @@ data:
     }
   ingress: |-
     {
-        "ingressGateway" : "knative-serving/knative-ingress-gateway",
-        "ingressService" : "deploykf-gateway.deploykf-istio-gateway.svc.cluster.local",
-        "localGateway" : "knative-serving/knative-local-gateway",
-        "localGatewayService" : "knative-local-gateway.knative-serving.svc.cluster.local",
-        "ingressDomain"  : "kn.kf.cz.weystrom.net",
+        "ingressGateway" : "{{< .Values.deploykf_core.deploykf_istio_gateway.namespace >}}/{{< .Values.deploykf_core.deploykf_istio_gateway.gateway.name >}}",
+        "ingressService" : "{{< .Values.deploykf_core.deploykf_istio_gateway.gateway.name >}}.{{< .Values.deploykf_core.deploykf_istio_gateway.namespace >}}.svc.cluster.local",
+        "localGateway" : "{{< .Values.deploykf_core.deploykf_istio_gateway.namespace >}}/{{< .Values.deploykf_core.deploykf_istio_gateway.gateway.name >}}",
+        "localGatewayService" : "{{< .Values.deploykf_core.deploykf_istio_gateway.gateway.name >}}.{{< .Values.deploykf_core.deploykf_istio_gateway.namespace >}}.svc.cluster.local",
+        "ingressDomain"  : "{{< .Values.deploykf_core.deploykf_istio_gateway.gateway.hostname >}}",
         "ingressClassName" : "istio",
         "domainTemplate": "{{ .Name }}-{{ .Namespace }}.{{ .IngressDomain }}",
         "urlScheme": "https",
-        "disableIngressCreation": false,
+        "disableIngressCreation": true,
         "disableIstioVirtualHost": true
+    }
+  deploy: |-
+    {
+        "defaultDeploymentMode": "RawDeployment"
     }

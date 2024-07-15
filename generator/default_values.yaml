@@ -2083,14 +2083,6 @@ kubeflow_tools:
 
 
   ## --------------------------------------
-  ##                knative
-  ## --------------------------------------
-  knative:
-    enabled: true
-    namespace: knative-serving
-    extraManifests: []
-  
-  ## --------------------------------------
   ##                kserve
   ## --------------------------------------
   kserve:
@@ -2109,3 +2101,14 @@ kubeflow_tools:
       urlScheme: https
     credentials:
       s3: {}
+
+extra_tools:
+  open_webui:
+    enabled: false
+    namespace: openwebui
+    valuesOverrides: {}
+    charts:
+      open_webui:
+        name: open-webui
+        version: 3.0.9
+        repository: https://helm.openwebui.com/
