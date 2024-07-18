@@ -2,33 +2,25 @@ open-webui:
   ollama:
     image:
       tag: "0.2.1"
+    persistentVolume:
+      enabled: true
+      storageClass: "openebs-lvmpv"
+      size: "200Gi"
+    updateStrategy:
+      type: "Recreate"
+    extraEnv:
+      - name: OLLAMA_FLASH_ATTENTION
+        value: "1"
+      - name: OLLAMA_KEEP_ALIVE
+        value: "-1"
     ollama:
       models:
         - llama3:8b
-        - llama3:70b
       gpu:
         enabled: true
         number: 2
-      persistentVolume:
-        enabled: true
-        storageClass: "openebs-lvmpv"
-        size: "200Gi"
-      updateStrategy:
-        type: "Recreate"
-      extraEnv:
-        - name: OLLAMA_FLASH_ATTENTION
-          value: "1"
-        - name: OLLAMA_KEEP_ALIVE
-          value: "-1"
-  
   ingress:
-    enabled: true
-    class: "istio"
-    host: "chat.kf.cz03.weystrom.net"
-    tls: true
-    annotations:
-      kubernetes.io/tls-acme: "true"
-  
+    enabled: false
   persistence:
     enabled: true
     storageClass: "openebs-lvmpv"
