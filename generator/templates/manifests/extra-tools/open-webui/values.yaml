@@ -24,6 +24,11 @@ open-webui:
   persistence:
     enabled: true
     storageClass: "openebs-lvmpv"
+  extraEnvVars:
+  - name: WEBUI_AUTH_TRUSTED_EMAIL_HEADER
+    value: X-Forwarded-Email
+  - name: WEBUI_AUTH_TRUSTED_NAME_HEADER
+    value: X-Forwarded-User
 
 ########################################
 ## SHARED | deploykf
