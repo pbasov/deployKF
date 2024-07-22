@@ -31,6 +31,9 @@
   {{- $disable_auth_routes = "minio-api-route" | append $disable_auth_routes }}
   {{- $disable_auth_routes = "minio-console-route" | append $disable_auth_routes }}
 {{- end }}
+{{- if .Values.deployKF.open_webui.enabled }}
+  {{- $disable_auth_routes = "open-webui-route" | append $disable_auth_routes }}
+{{- end }}
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:

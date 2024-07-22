@@ -12,6 +12,10 @@
 - "{{ .Values.deployKF.minio.namespace }}/minio-api.{{ .Values.deployKF.gateway.hostname }}"
 - "{{ .Values.deployKF.minio.namespace }}/minio-console.{{ .Values.deployKF.gateway.hostname }}"
 {{- end }}
+{{- if .Values.deployKF.minio.enabled }}
+## select VirtualServices for Minio API and Console
+- "{{ .Values.deployKF.open_webui.namespace }}/chat.{{ .Values.deployKF.gateway.hostname }}"
+{{- end }}
 {{- end }}
 
 apiVersion: networking.istio.io/v1beta1

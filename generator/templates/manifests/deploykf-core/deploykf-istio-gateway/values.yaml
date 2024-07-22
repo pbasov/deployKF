@@ -76,6 +76,9 @@ deployKF:
     enabled: {{< .Values.deploykf_opt.deploykf_minio.enabled | conv.ToBool >}}
     namespace: {{< .Values.deploykf_opt.deploykf_minio.namespace | quote >}}
 
+  open_webui:
+    enabled: {{< .Values.extra_tools.open_webui.enabled | conv.ToBool >}}
+    namespace: {{< .Values.extra_tools.open_webui.namespace | quote >}}
 
 ########################################
 ## DEPENDENCY | istio-gateway
