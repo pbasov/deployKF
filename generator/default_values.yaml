@@ -2103,6 +2103,22 @@ kubeflow_tools:
       s3: {}
 
 extra_tools:
+  monitoring:
+    enabled: false
+    namespace: monitoring
+    grafana:
+      enabled: true
+    dcgm-exporter:
+      enabled: false
+    charts:
+      prometheus:
+        name: kube-prometheus-stack
+        version: 61.3.2
+        repository: https://prometheus-community.github.io/helm-charts
+      dcgm:
+        name: dcgm-exporter
+        version: 3.4.2
+        repository: https://nvidia.github.io/dcgm-exporter/helm-charts
   nvdp:
     enabled: false
     namespace: nvidia-device-plugin

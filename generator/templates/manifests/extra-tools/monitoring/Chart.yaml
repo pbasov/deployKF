@@ -1,0 +1,12 @@
+apiVersion: v2
+name: deploykf-monitoring
+version: 1.0.0
+dependencies:
+  - alias: prometheus
+    name: {{< .Values.extra_tools.monitoring.charts.prometheus.name | quote >}}
+    version: {{< .Values.extra_tools.monitoring.charts.prometheus.version | quote >}}
+    repository: {{< .Values.extra_tools.monitoring.charts.prometheus.repository | quote >}}
+  - alias: dcgm-exporter
+    name: {{< .Values.extra_tools.monitoring.charts.dcgm.name | quote >}}
+    version: {{< .Values.extra_tools.monitoring.charts.dcgm.version | quote >}}
+    repository: {{< .Values.extra_tools.monitoring.charts.dcgm.repository | quote >}}

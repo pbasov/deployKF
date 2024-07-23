@@ -353,3 +353,9 @@ extra_tools:
     namespace: openwebui
   nvdp:
     enabled: true
+  monitoring:
+    enabled: true
+    grafana:
+      enabled: true
+    dcgm-exporter:
+      enabled: true

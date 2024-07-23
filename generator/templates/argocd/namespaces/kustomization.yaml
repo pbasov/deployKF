@@ -82,3 +82,6 @@ resources:
   {{<- if .Values.extra_tools.nvdp.enabled >}}
   - extra-tools/nvdp.yaml
   {{<- end >}}
+  {{<- if .Values.extra_tools.monitoring.enabled >}}
+  - extra-tools/monitoring.yaml
+  {{<- end >}}

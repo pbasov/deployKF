@@ -188,3 +188,8 @@ argocd/applications/extra-tools/nvdp.yaml
 argocd/namespaces/extra-tools/nvdp.yaml
 manifests/extra-tools/nvdp/
 {{<- end >}}
+{{<- if not .Values.extra_tools.monitoring.enabled >}}
+argocd/applications/extra-tools/monitoring.yaml
+argocd/namespaces/extra-tools/monitoring.yaml
+manifests/extra-tools/monitoring/
+{{<- end >}}
