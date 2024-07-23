@@ -351,3 +351,5 @@ extra_tools:
   open_webui:
     enabled: true
     namespace: openwebui
+  nvdp:
+    enabled: true

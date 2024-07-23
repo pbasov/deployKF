@@ -2103,6 +2103,17 @@ kubeflow_tools:
       s3: {}
 
 extra_tools:
+  nvdp:
+    enabled: false
+    namespace: nvidia-device-plugin
+    valuesOverrides: {}
+    gfd:
+      enabled: True
+    charts:
+      nvdp:
+        name: nvidia-device-plugin
+        version: 0.16.0
+        repository: https://nvidia.github.io/k8s-device-plugin
   open_webui:
     enabled: false
     namespace: openwebui

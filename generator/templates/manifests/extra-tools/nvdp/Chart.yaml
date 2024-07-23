@@ -1,0 +1,8 @@
+apiVersion: v2
+name: deploykf-nvdp
+version: 1.0.0
+dependencies:
+  - alias: nvdp
+    name: {{< .Values.extra_tools.nvdp.charts.nvdp.name | quote >}}
+    version: {{< .Values.extra_tools.nvdp.charts.nvdp.version | quote >}}
+    repository: {{< .Values.extra_tools.nvdp.charts.nvdp.repository | quote >}}

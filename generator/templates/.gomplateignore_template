@@ -183,3 +183,8 @@ argocd/applications/extra-tools/open-webui.yaml
 argocd/namespaces/extra-tools/open-webui.yaml
 manifests/extra-tools/open-webui/
 {{<- end >}}
+{{<- if not .Values.extra_tools.nvdp.enabled >}}
+argocd/applications/extra-tools/nvdp.yaml
+argocd/namespaces/extra-tools/nvdp.yaml
+manifests/extra-tools/nvdp/
+{{<- end >}}
