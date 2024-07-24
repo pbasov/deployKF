@@ -2110,6 +2110,7 @@ extra_tools:
       enabled: true
     dcgm-exporter:
       enabled: false
+    valuesOverrides: {}
     charts:
       prometheus:
         name: kube-prometheus-stack
@@ -2133,9 +2134,9 @@ extra_tools:
   open_webui:
     enabled: false
     namespace: openwebui
-    valuesOverrides: {}
     ollama:
       version: 0.2.8
+    valuesOverrides: {}
     charts:
       open_webui:
         name: open-webui
