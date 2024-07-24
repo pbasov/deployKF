@@ -1,7 +1,7 @@
 open-webui:
   ollama:
     image:
-      tag: "0.2.1"
+      tag: {{< .Values.extra_tools.open_webui.ollama.version  >}}
     persistentVolume:
       enabled: true
       storageClass: "openebs-lvmpv"

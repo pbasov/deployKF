@@ -2134,6 +2134,8 @@ extra_tools:
     enabled: false
     namespace: openwebui
     valuesOverrides: {}
+    ollama:
+      version: 0.2.8
     charts:
       open_webui:
         name: open-webui
