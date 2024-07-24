@@ -1,7 +1,7 @@
 open-webui:
   ollama:
     image:
-      tag: {{< .Values.extra_tools.open_webui.ollama.version  >}}
+      tag: {{< .Values.extra_tools.open_webui.ollama.version >}}
     persistentVolume:
       enabled: true
       storageClass: "openebs-lvmpv"
@@ -14,8 +14,7 @@ open-webui:
       - name: OLLAMA_KEEP_ALIVE
         value: "-1"
     ollama:
-      models:
-        - llama3:8b
+      models: {{< .Values.extra_tools.open_webui.ollama.models >}}
       gpu:
         enabled: true
         number: 2

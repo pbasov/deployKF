@@ -2136,6 +2136,8 @@ extra_tools:
     namespace: openwebui
     ollama:
       version: 0.2.8
+      models:
+      - llama3.1:8b
     valuesOverrides: {}
     charts:
       open_webui:
